@@ -2,8 +2,7 @@ package com.example.restro.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
-import java.sql.Time;
+import java.time.LocalTime;
 
 @Data
 @Entity
@@ -15,7 +14,7 @@ public class RestaurantDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rest_id_seq")
 
     @Column(name = "rest_id")
-    private Integer rest_id;
+    private Integer restId;
 
     @Column(name = "name")
     private String name;
@@ -27,12 +26,12 @@ public class RestaurantDetails {
     private String cuisine;
 
     @Column(name = "open_time")
-    private Time open_time;
+    private LocalTime openTime;
 
     @Column(name = "close_time")
-    private Time close_time;
+    private LocalTime closeTime;
 
     @Column(name = "no_of_tables")
-    private Integer no_of_tables;
+    private Integer noOfTables;
 
 }

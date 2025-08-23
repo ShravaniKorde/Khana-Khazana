@@ -13,7 +13,7 @@ public class TableDetails {
     @SequenceGenerator(name = "table_id_seq", sequenceName = "table_id_seq", allocationSize = 1, initialValue = 5)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "table_id_seq")
     @Column(name = "table_id")
-    private Integer table_id;
+    private Integer tableId;
 
     @ManyToOne
     @JoinColumn(name = "table_rest_fk", referencedColumnName = "rest_id")

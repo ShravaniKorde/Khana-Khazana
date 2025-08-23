@@ -2,40 +2,45 @@ package com.example.restro.entity;
 
 import com.example.restro.model.BookingStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-
-import java.util.Date;
+import lombok.NoArgsConstructor;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 @Entity
 @Table(name = "bookings")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class BookingDetails {
 
     @Id
     @SequenceGenerator(name = "booking_id_seq", sequenceName = "booking_id_seq", allocationSize = 1, initialValue = 5)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "booking_id_seq")
-    @Column(name = "booking_id")
-    private Integer booking_id;
+    private Integer bookingId;
 
     @ManyToOne
     @JoinColumn(name = "booking_user_fk", referencedColumnName = "user_id")
     private UserDetails userDetails;
 
-    @ManyToOne
-    @JoinColumn(name = "booking_rest_fk", referencedColumnName = "rest_id")
-    private RestaurantDetails restaurantDetails;
+//    @ManyToOne
+//    @JoinColumn(name = "booking_rest_fk", referencedColumnName = "rest_id")
+//    private RestaurantDetails restaurantDetails;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "booking_table_fk", referencedColumnName = "table_id")
+//    private TableDetails tableDetails;
 
-    @ManyToOne
-    @JoinColumn(name = "booking_table_fk", referencedColumnName = "table_id")
-    private TableDetails tableDetails;
+    private LocalDate bookingDate;
 
-    @Column(name = "bookingDate")
-    private Date bookingDate;
+    private LocalTime bookingTime;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private BookingStatus status;
 
-    @Column(name = "headCount")
     private Integer headCount;
 }
