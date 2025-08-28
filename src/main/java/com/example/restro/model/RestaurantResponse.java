@@ -9,12 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookingResponse {
+public class RestaurantResponse {
 
+    private Integer restId;
     private String name;
-    private String email;
-    private String date;
-    private String bookingTime;
-    private Integer headCount;
+    private String address;
+    private String cuisine;
 
 }

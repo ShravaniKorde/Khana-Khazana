@@ -6,6 +6,7 @@ import com.example.restro.model.RegistrationResponse;
 import com.example.restro.model.RegistrationUpdateRequest;
 import com.example.restro.repository.UserDetailsRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,9 @@ import java.util.List;
 @Service
 @Slf4j
 public class UserService {
+
+    @Value("${test.property.name}")
+    private String dummyProperty;
 
     private UserDetailsRepository userDetailsRepository;
 
@@ -39,6 +43,8 @@ public class UserService {
     }
 
     public RegistrationResponse updateUserRegistration(RegistrationUpdateRequest request) {
+        log.info("Dummy setting from configuration file : {}", dummyProperty);
+
         UserDetails userDetails = userDetailsRepository.findByName(request.getName());
 
         userDetails.setName(request.getName());
@@ -53,8 +59,8 @@ public class UserService {
                 .build();
     }
 
-    public RegistrationResponse deleteUserRegistration(String name) {
-        UserDetails userDetails = userDetailsRepository.findByName(name);
+    public RegistrationResponse deleteUserRegistration(String email) {
+        UserDetails userDetails = userDetailsRepository.findByEmail(email);
         userDetailsRepository.delete(userDetails);
 
         return RegistrationResponse.builder()

@@ -26,14 +26,6 @@ public class BookingDetails {
     @JoinColumn(name = "booking_user_fk", referencedColumnName = "user_id")
     private UserDetails userDetails;
 
-//    @ManyToOne
-//    @JoinColumn(name = "booking_rest_fk", referencedColumnName = "rest_id")
-//    private RestaurantDetails restaurantDetails;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "booking_table_fk", referencedColumnName = "table_id")
-//    private TableDetails tableDetails;
-
     private LocalDate bookingDate;
 
     private LocalTime bookingTime;

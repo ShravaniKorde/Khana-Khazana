@@ -1,6 +1,6 @@
 package com.example.restro.controller;
 
-import com.example.restro.entity.RestaurantDetails;
+import com.example.restro.model.RestaurantResponse;
 import com.example.restro.services.RestaurantService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +20,8 @@ public class RestaurantController {
         this.restaurantService = restaurantService;
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<List<RestaurantDetails>> getAllRestaurants() {
-        return new ResponseEntity<>(restaurantService.getAllRestaurants(), HttpStatus.OK);
+    @GetMapping("/read")
+    public ResponseEntity<List<RestaurantResponse>> getAllBookings() {
+        return new ResponseEntity<>(this.restaurantService.getAllRestaurants(), HttpStatus.OK);
     }
 }
