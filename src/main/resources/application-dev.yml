@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: Restro Application
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/khanakhazana
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+booking:
+  max-tables: 10
+
+test:
+  property:
+    name: DEV
